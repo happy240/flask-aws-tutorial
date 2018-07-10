@@ -11,6 +11,7 @@ from flask import Flask, render_template, request
 from application import db
 from application.models import Data
 from application.forms import EnterDBInfo, RetrieveDBInfo
+import os
 
 # Elastic Beanstalk initalization
 application = Flask(__name__)
@@ -44,7 +45,11 @@ def index():
         except:
             db.session.rollback()
         return render_template('results.html', results=query_db, num_return=num_return)                
-    
+   
+    if 'CONFIGVER' in os.environ:
+        configver = os.environ['CONFIGVER']
+    else:
+        configver = 'Not Defined' 
     return render_template('index.html', form1=form1, form2=form2)
 
 if __name__ == '__main__':
