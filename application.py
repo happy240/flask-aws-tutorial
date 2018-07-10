@@ -53,4 +53,5 @@ def index():
     return render_template('index.html', form1=form1, form2=form2, configver=configver)
 
 if __name__ == '__main__':
+    application.config['JSON_AS_ASCII'] = False
     application.run(host='0.0.0.0')
