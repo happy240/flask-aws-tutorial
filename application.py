@@ -50,7 +50,7 @@ def index():
         configver = os.environ['CONFIGVER']
     else:
         configver = 'Not Defined' 
-    return render_template('index.html', form1=form1, form2=form2)
+    return render_template('index.html', form1=form1, form2=form2, configver=configver)
 
 if __name__ == '__main__':
     application.run(host='0.0.0.0')
